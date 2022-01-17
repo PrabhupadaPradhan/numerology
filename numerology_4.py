@@ -304,7 +304,7 @@ if export_as_pdf:
                 final_list = []
                 months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
                 for i in range(6):
-                    list_1 = [str(months[j]) + " " + str(year + i) + " " + str((int(result) + i + j) % 9) + " " + str(keyword[(result + i + j) % 9 - 1]) for j in range(12)]
+                    list_1 = [str(months[j]) + " " + str(year + i) + " " + str((int(result) + i + j) % 9) + " " + str(keyword[(int(result) + i + j) % 9 - 1]) for j in range(12)]
                     final_list.append(list_1)
                 for i in final_list[0]:
                     line += 1
