@@ -299,16 +299,20 @@ if export_as_pdf:
                     if reference[r] > year:
                         result = str(major_p[r - 1][1])
                         break
-                line += 1
-                pdf.cell(200, h, txt = result, ln = line, align = 'L')
+                #line += 1
+                #pdf.cell(200, h, txt = result, ln = line, align = 'L')
                 final_list = []
                 months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
                 for i in range(6):
                     list_1 = [str(months[j]) + " " + str(year + i) + " " + str((int(result) + i + j) % 9 + 1) + " " + str(keyword[(int(result) + i + j) % 9 - 1]) for j in range(12)]
                     final_list.append(list_1)
                 for i in final_list:
+                    line += 1
+                    pdf.cell(200, h, txt = str(year + i) + keyword[(int(result) + i) % 9 - 1], ln = line, align = 'L')
                     for j in i:
                         line += 1
                         pdf.cell(200, h, txt = j, ln = line, align = 'L')
+                    line += 1
+                    pdf.cell(200, h, txt = " ", ln = line, align = 'L')
         html = create_download_link(pdf.output(dest="S").encode("latin-1"), "numerology")
         st.markdown(html, unsafe_allow_html=True)
