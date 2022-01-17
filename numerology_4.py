@@ -298,6 +298,7 @@ if export_as_pdf:
                 for r in range(len(reference)):
                     if reference[r] > year:
                         result = str(major_p[r - 1][1])
+                        break
                 line += 1
                 pdf.cell(200, h, txt = result, ln = line, align = 'L')
         html = create_download_link(pdf.output(dest="S").encode("latin-1"), "numerology")
