@@ -304,19 +304,10 @@ if export_as_pdf:
                 final_list = []
                 months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
                 for i in range(6):
-                    #list_1 = [str(months[j]) + " " + str(year + i) + " " + str((result + i + j) % 9) + " " + str(keyword[(result + i + j) % 9 - 1]) for j in range(12)]
-                    for j in range(12):
-                        line += 1
-                        pdf.cell(200, h, txt = str(type(str(months[j]))), ln = line, align = 'L')
-                        line += 1
-                        pdf.cell(200, h, txt = str(type(str(year + i))), ln = line, align = 'L')
-                        line += 1
-                        pdf.cell(200, h, txt = str(type(str((result + i + j) % 9))), ln = line, align = 'L')
-                        line += 1
-                        pdf.cell(200, h, txt = str(type(str(keyword[(result + i + j) % 9 - 1]))), ln = line, align = 'L')
-                    #final_list.append(list_1)
-                #for i in final_list[0]:
-                #    line += 1
-                #    pdf.cell(200, h, txt = i, ln = line, align = 'L')
+                    list_1 = [str(months[j]) + " " + str(year + i) + " " + str((int(result) + i + j) % 9) + " " + str(keyword[(result + i + j) % 9 - 1]) for j in range(12)]
+                    final_list.append(list_1)
+                for i in final_list[0]:
+                    line += 1
+                    pdf.cell(200, h, txt = i, ln = line, align = 'L')
         html = create_download_link(pdf.output(dest="S").encode("latin-1"), "numerology")
         st.markdown(html, unsafe_allow_html=True)
