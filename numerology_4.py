@@ -308,7 +308,7 @@ if export_as_pdf:
                     final_list.append(list_1)
                 for i in final_list:
                     line += 1
-                    pdf.cell(200, h, txt = str(year + i) + keyword[(int(result) + i) % 9 - 1], ln = line, align = 'L')
+                    pdf.cell(200, h, txt = str(str(year + i) + str(keyword[(int(result) + i) % 9 - 1])), ln = line, align = 'L')
                     for j in i:
                         line += 1
                         pdf.cell(200, h, txt = j, ln = line, align = 'L')
