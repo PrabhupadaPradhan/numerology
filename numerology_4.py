@@ -306,13 +306,15 @@ if export_as_pdf:
                 for i in range(6):
                     list_1 = [str(months[j]) + " " + str(year + i) + " " + str((int(result) + i + j) % 9 + 1) + " " + str(keyword[(int(result) + i + j) % 9 - 1]) for j in range(12)]
                     final_list.append(list_1)
+                count = 0
                 for i in final_list:
                     line += 1
-                    pdf.cell(200, h, txt = str(str(year + i) + str(keyword[(int(result) + i) % 9 - 1])), ln = line, align = 'L')
+                    pdf.cell(200, h, txt = str(str(year + count) + str(keyword[(int(result) + i) % 9 - 1])), ln = line, align = 'L')
                     for j in i:
                         line += 1
                         pdf.cell(200, h, txt = j, ln = line, align = 'L')
                     line += 1
                     pdf.cell(200, h, txt = " ", ln = line, align = 'L')
+                    count += 1
         html = create_download_link(pdf.output(dest="S").encode("latin-1"), "numerology")
         st.markdown(html, unsafe_allow_html=True)
