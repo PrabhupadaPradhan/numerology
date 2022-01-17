@@ -1,6 +1,6 @@
 import streamlit as st
 import base64
-from datetime import date
+import datetime as dt
 def create_download_link(val, filename):
     b64 = base64.b64encode(val)
     return f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename}.pdf">Download file</a>'
@@ -294,7 +294,7 @@ if export_as_pdf:
                     line += 1
                     pdf.cell(200, h, txt = str(str(e + 1) + '. ' + plus_9(date, add = major_p[e][0] - list_of_add[e]) + " till " + str(major_p[e][0]) + " " + plus_9_1(date, add = major_p[e][0]) + " " + str(major_p[e][1]) + " " + keyword[major_p[e][1] - 1]), ln = line, align = 'L')
                     reference.append(int(plus_9(date, add = major_p[e][0] - list_of_add[e]).split("/")[-1]))
-                year = int(date.today().year)
+                year = int(dt.date.today().year)
                 for r in range(len(reference)):
                     if reference[r] > year:
                         result = major_p[r - 1][1]
