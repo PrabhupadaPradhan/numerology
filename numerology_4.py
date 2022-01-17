@@ -301,5 +301,13 @@ if export_as_pdf:
                         break
                 line += 1
                 pdf.cell(200, h, txt = result, ln = line, align = 'L')
+                final_list = []
+                months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                for i in range(6):
+                    list_1 = [months[j] + " " + str(int(year) + i) + " " + int((result + i + j) % 9) + " " + keyword[int((result + i + j) % 9) - 1] for j in range(12)]
+                    final_list.append(list_1)
+                for i in final_list[0]:
+                    line += 1
+                    pdf.cell(200, h, txt = i, ln = line, align = 'L')
         html = create_download_link(pdf.output(dest="S").encode("latin-1"), "numerology")
         st.markdown(html, unsafe_allow_html=True)
