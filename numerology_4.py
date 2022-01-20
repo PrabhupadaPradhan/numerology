@@ -7,6 +7,7 @@ def create_download_link(val, filename):
 st.title("NUMEROLOGY APP(Copyright © 2021 Prabhupada Pradhan ALL RIGHTS RESERVED)")
 name_org = st.text_input("Please enter your name:- ")
 date_org = st.text_input("Please enter your date of birth:- ")
+dob = [int(i) for i in date_org.split("/")]
 date_org = "-".join((date_org.split("/"))[::-1]) + " 00:00:00"
 pdf_name = "trial_1"
 import pandas as pd
@@ -295,10 +296,11 @@ if export_as_pdf:
                     pdf.cell(200, h, txt = str(str(e + 1) + '. ' + plus_9(date, add = major_p[e][0] - list_of_add[e]) + " till " + str(major_p[e][0]) + " " + plus_9_1(date, add = major_p[e][0]) + " " + str(major_p[e][1]) + " " + keyword[major_p[e][1] - 1]), ln = line, align = 'L')
                     reference.append(int(plus_9(date, add = major_p[e][0] - list_of_add[e]).split("/")[-1]))
                 year = int(dt.date.today().year)
-                for r in range(len(reference)):
+                '''for r in range(len(reference)):
                     if reference[r] > year:
                         result = str(major_p[r - 1][1])
-                        break
+                        break'''
+                result = (dob[0] + dob[1] + int(year)) / 9
                 #line += 1
                 #pdf.cell(200, h, txt = result, ln = line, align = 'L')
                 final_list = []
