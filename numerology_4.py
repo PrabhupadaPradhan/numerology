@@ -296,13 +296,7 @@ if export_as_pdf:
                     pdf.cell(200, h, txt = str(str(e + 1) + '. ' + plus_9(date, add = major_p[e][0] - list_of_add[e]) + " till " + str(major_p[e][0]) + " " + plus_9_1(date, add = major_p[e][0]) + " " + str(major_p[e][1]) + " " + keyword[major_p[e][1] - 1]), ln = line, align = 'L')
                     reference.append(int(plus_9(date, add = major_p[e][0] - list_of_add[e]).split("/")[-1]))
                 year = int(dt.date.today().year)
-                '''for r in range(len(reference)):
-                    if reference[r] > year:
-                        result = str(major_p[r - 1][1])
-                        break'''
                 result = (int(dob[0]) + int(dob[1]) + int(year)) % 9
-                #line += 1
-                #pdf.cell(200, h, txt = result, ln = line, align = 'L')
                 final_list = []
                 months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
                 for i in range(5):
